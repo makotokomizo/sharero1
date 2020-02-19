@@ -1,0 +1,8 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% block body %}
+
+<p><a href="{% url 'register:property_data_input' %}">ユーザー作成</a></p>
+<hr />
+{% for user in user_list %}
+<p>ユーザー名: {{ property.user }}</p>
+<hr />
+{% endfor %} {% endblock %}

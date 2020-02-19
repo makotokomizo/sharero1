@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% block body %}
+
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="overlay"></div>
+  <div class="probootstrap-wrap-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+            <div class="page-title probootstrap-animate">
+                <div class="probootstrap-breadcrumbs">
+                  <a href="#">Home</a><span><a href="{% url 'property:property_list' %}">Properties</a></span>{{property_detail}}
+                </div>
+                <h1>家情報 編集</h1>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul>
+</section>
+<!-- END: slider  -->
+
+<!-- <form action="" method="POST" enctype="multipart/form-data">
+    {{ form.non_field_errors }}
+    <table class="table">
+        <tbody>
+            {% for field in form %}
+            <tr>
+                <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
+                <td>{{ field }} {{ field.errors }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success btn-lg">送信</button>
+</form>  -->
+<form action="" method="POST" enctype="multipart/form-data">
+    {{ property_form.non_field_errors }}
+    <table class="table">
+        <tbody>
+            {% for field in property_form %}
+            <tr>
+                <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
+                <td>{{ field.value }} {{ field.errors }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success btn-lg">送信</button>
+</form>
+
+
+{% endblock %}

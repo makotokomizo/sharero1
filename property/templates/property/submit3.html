@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% block body %}
+
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="overlay"></div>
+  <div class="probootstrap-wrap-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+            <div class="page-title probootstrap-animate">
+                <div class="probootstrap-breadcrumbs">
+                  <a href="#">Home</a><span><a href="{% url 'property:property_list' %}">Properties</a></span>{{property_detail}}
+                </div>
+                <h1>Step 3/5</h1>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul>
+</section>
+<!-- END: slider  -->
+
+
+<section class="probootstrap-section">
+    <div class="container">
+      <!--
+      <div class="row heading">
+        <div class="col-md-12">
+          <h2 class="mt0 mb50 text-center">{{property_detail}}</h2>
+        </div>
+      </div>
+      -->
+      <div class="row">
+        <div class="col-md-12">
+          <!--文の長さ-->
+          <h2> {{user.email}}さん</h2>
+          <form action="" method='POST'  class="post-form" enctype="multipart/form-data">
+              {% csrf_token %}
+              <!-- {% bootstrap_form property_form %} -->
+                <!-- {{property_form.as_p}} -->
+              {% for field in property_form %}
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="{{ field.name }}">{{ field.label }}</label>
+                  <div class="col-sm-8">
+                    {{ field }}
+                </div>
+              </div>
+              {% endfor %}
+              {% buttons %}
+                  <button type="submit" class="btn btn-primary">次のStep</button>
+              {% endbuttons %}
+          </form>
+          <!-- <input type="checkbox" name="tags" value="1" id="id_tags_0">
+          <label for="id_tags_0">Python</label> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock body %}

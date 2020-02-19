@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block body %}
+
+<h1>写真</h1>
+<form
+  action="{% url 'register:index' %}"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %} {{ form }}
+  <input type="submit" value="投稿" />
+</form>
+
+{% endblock body%}

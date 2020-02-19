@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block body %}
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="overlay"></div>
+  <div class="probootstrap-wrap-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="page-title probootstrap-animate">
+            <h1>会員登録</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul>
+</section>
+
+<br>
+
+<section class="probootstrap-slider flexslider2 page-inner">
+  <div class="card col-md-6">
+    <div class="card-body">
+      <a
+        href="{% url 'register:user_create_nester' %}"
+        class="btn btn-success btn-lg btn-block"
+        >Nester</a
+      >
+      <hr />
+      <a
+        href="{% url 'register:user_create_partner' %}"
+        class="btn btn-success btn-lg btn-block"
+        >Partner</a
+      >
+    </div>
+  </div>
+  <!-- 右側、会員登録エリアおわり -->
+  <!-- <ul class="slides">
+    <li style="background-image: url(img/slider_1.jpg);"></li>
+    <li style="background-image: url(img/slider_4.jpg);"></li>
+    <li style="background-image: url(img/slider_2.jpg);"></li>
+  </ul> -->
+</section>
+<!-- <br /> -->
+  <!-- <ul class="slides">
+          <li style="background-image: url(img/slider_1.jpg);"></li>
+          <li style="background-image: url(img/slider_4.jpg);"></li>
+          <li style="background-image: url(img/slider_2.jpg);"></li>
+        </ul> -->
+</section>
+{% endblock body %}
