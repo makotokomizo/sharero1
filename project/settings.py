@@ -7,11 +7,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
+SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 try:
     from .local_settings import *
@@ -176,7 +176,7 @@ LOGIN_REDIRECT_URL = 'register:top'
 
 STATIC_URL = '/static/'
 
-if DEBUG:
+if not DEBUG:
     import dj_database_url
     DATABASES = {
         'default': {
@@ -190,6 +190,7 @@ if DEBUG:
     }
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default'].update(db_from_env)
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     SECRET_KEY = os.environ['SECRET_KEY']
     import django_heroku #追加
