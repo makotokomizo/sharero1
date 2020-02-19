@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 try:
     from .local_settings import *
@@ -176,7 +176,7 @@ LOGIN_REDIRECT_URL = 'register:top'
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
+if DEBUG:
     import dj_database_url
     DATABASES = {
         'default': {
