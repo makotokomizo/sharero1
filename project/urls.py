@@ -22,18 +22,21 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
-    path('property/', include('property.urls', namespace='property')),
-    path('agents/', include('agents.urls', namespace='agents')),
-    path('about/', include('about.urls', namespace='about')),
-    path('contact/', include('contact.urls', namespace='contact')),
-    path('register/', include('register.urls', namespace='register')),
+    # path('property/', include('property.urls', namespace='property')),
+    # path('agents/', include('agents.urls', namespace='agents')),
+    # path('about/', include('about.urls', namespace='about')),
+    # path('contact/', include('contact.urls', namespace='contact')),
+    # path('register/', include('register.urls', namespace='register')),
+    
+
+    # path('api-auth/', include('rest_framework.urls')),
+    # path('chat/', include('chat.api.urls', namespace='chat')),
+    # path('rest-auth/', include('rest_auth.urls')),
+    # path('rest-auth/registration/', include('rest_auth.registration.urls')),
+
+
+
     # path('chat/', include('chat.urls', namespace='chat')),
-
-    path('api-auth/', include('rest_framework.urls')),
-    path('chat/', include('chat.api.urls', namespace='chat')),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
-
     # path('public/', include('public.urls', namespace='public')),
     # path('build/', include('build.urls', namespace='build')),
     # path('build-test/', include('build-test.urls', namespace='build-test')),
@@ -41,7 +44,7 @@ urlpatterns = [
     # path('talk/', TemplateView.as_view(template_name='index.html')),
     # re_path('.*', TemplateView.as_view(template_name='index.html')),
     # path('front/', TemplateView.as_view(template_name='index.html')),
-    path('api/', include('todos.api.urls', namespace='todos')),
+    # path('api/', include('todos.api.urls', namespace='todos')),
 
 ]
 
