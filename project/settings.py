@@ -13,10 +13,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# try:
-#     from .local_settings import *
-# except InmportError:
-#     pass
+try:
+    from .local_settings import *
+except InmportError:
+    pass
 
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     'register',
     'chat',
     'channels',
-    'build',
-    'todos',
+    # 'build',
+    # 'todos',
     # 'todo',
     # 'build-test',
     # 'public'
@@ -174,16 +174,15 @@ AUTH_USER_MODEL = 'register.User'
 LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'register:top'
 
-# STATIC_URL = '/static/'
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
+
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),
-]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 if not DEBUG:
     import dj_database_url
     DATABASES = {
@@ -199,17 +198,16 @@ if not DEBUG:
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default'].update(db_from_env)
     # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+    STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'static'),
+    ]
     SECRET_KEY = os.environ['SECRET_KEY']
     import django_heroku #追加
     django_heroku.settings(locals()) #追加
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'public', 'build', "static"),
-# ]
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
