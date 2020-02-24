@@ -112,26 +112,26 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
 
-        # EMAIL = settings.DEFAULT_FROM_EMAIL
-        # PASSWORD = settings.EMAIL_HOST_PASSWRD
-        # TO = self.email
+        EMAIL = settings.DEFAULT_FROM_EMAIL
+        PASSWORD = settings.EMAIL_HOST_PASSWRD
+        TO = self.email
 
-        # msg = MIMEText(message)
+        msg = MIMEText(message)
 
-        # msg['Subject'] = subject
-        # msg['From'] = EMAIL
+        msg['Subject'] = subject
+        msg['From'] = EMAIL
         # msg['To'] = TO
 
-        # s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-        # s.starttls()
-        # s.login(EMAIL, PASSWORD)
-        # s.sendmail(EMAIL, TO, msg.as_string())
-        # s.quit()
-        print(self.email)
-        from_email = settings.DEFAULT_FROM_EMAIL
-        send_mail(subject, message, from_email, [self.email], **kwargs)
-        print("here")
-        send_mail(subject, message, "test2019reiwafirst@gmail.com", ["poiprince8888@gmail.com"], **kwargs)
+        s = smtplib.SMTP(host='smtp.gmail.com', port=587)
+        s.starttls()
+        s.login(EMAIL, PASSWORD)
+        s.sendmail(EMAIL, TO, msg.as_string())
+        s.quit()
+        # print(self.email)
+        # from_email = settings.DEFAULT_FROM_EMAIL
+        # send_mail(subject, message, from_email, [self.email], **kwargs)
+        # print("here")
+        # send_mail(subject, message, "test2019reiwafirst@gmail.com", ["poiprince8888@gmail.com"], **kwargs)
 
     # @property
     # def username(self):

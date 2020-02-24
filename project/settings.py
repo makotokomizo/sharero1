@@ -221,7 +221,7 @@ else:
 EMAIL_HOST = 'smtp.gmail.com'
 DEFAULT_FROM_EMAIL = 'test2019reiwafirst@gmail.com'
 EMAIL_HOST_USER = 'test2019reiwafirst@gmail.com'
-EMAIL_HOST_PASSWRD = 'kacywxkyjgsmitpf'
+EMAIL_HOST_PASSWRD = 'fodmyuaqihvczfqp'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
