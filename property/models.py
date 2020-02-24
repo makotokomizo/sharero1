@@ -49,8 +49,8 @@ genderTYPE = (
 )
 
 YesNo =  (
-    ("1", 'はい'),
-    ("2", 'いいえ')
+    (True, 'はい'),
+    (False, 'いいえ')
 )
 
 class SharableItem(models.Model):
@@ -70,11 +70,12 @@ class ExcludeMate(models.Model):
         
 class Property(models.Model):
     submitStage = models.PositiveIntegerField(default=0,null=True, blank=True)
+    public = models.BooleanField(default=False)
 
 
     #Step1------------
-    petsType = models.CharField('ペットはいますか？？', null=True, blank=True, max_length=50)
-    furniture = models.CharField('家具付きですか？？', null=True, blank=True, max_length=50)
+    petsType = models.CharField('ペットはいますか？', null=True, blank=True, max_length=50)
+    furniture = models.CharField('家具付きですか？', null=True, blank=True, max_length=50)
     member =  models.CharField('現在の居住者', null=True, blank=True, max_length=50)
     memberUnder18 = models.CharField('18歳以下', null=True, blank=True, max_length=50)
     postCode = models.CharField('郵便番号',max_length=8,blank=True)
@@ -83,7 +84,7 @@ class Property(models.Model):
     #Step1------------
 
     #Step2------------
-    title = models.TextField('あなたのお家に、目に留まるようなタイトルをつけましょう！',max_length=35, null=True, blank=True, help_text=(
+    title = models.CharField('あなたのお家に、目に留まるようなタイトルをつけましょう！',max_length=35, null=True, blank=True, help_text=(
             'ホームシェア物件を探しているメイトが一番初めに見る見出しです。あなたのお家のユニークな点を35文字以内で書いてみましょう！'),
     )
     contextSurrounding = models.TextField('お家やその周辺状況に関して、あなたの気に入っているところを紹介してみましょう',max_length=20, null=True, blank=True)
@@ -97,10 +98,11 @@ class Property(models.Model):
     excludeMateType = models.ManyToManyField(ExcludeMate, verbose_name='好ましくないメイト',blank=True)
     petsPermission = models.NullBooleanField('ペットを許可しますか??', choices=YesNo)  
     smokingPersiion = models.NullBooleanField('喫煙を許可しますか??', choices=YesNo) 
-    maxMenber = models.PositiveIntegerField('ホームシェア可能な最大人数を教えてください。', default=2, null=True, blank=True)
-    visiterPersiion = models.NullBooleanField('メイトの友達の招待を許可しますか??', choices=YesNo) 
-    visiterStayPersiion = models.NullBooleanField('メイトの友達の宿泊を許可しますか??', choices=YesNo) 
-    memoRoomDetail = models.TextField('他に、特筆事項があれば、ご記入ください??', max_length=50, null=True, blank=True)
+    maxMenber = models.PositiveIntegerField('ホームシェア可能な最大人数を教えてください。', default=1, null=True, blank=True)
+    visiterPersiion = models.NullBooleanField('メイトの友達の招待を許可しますか?', choices=YesNo) 
+    visiterStayPersiion = models.NullBooleanField('メイトの友達の宿泊を許可しますか?', choices=YesNo) 
+    memoRoomDetail = models.TextField('他に、特筆事項があれば、ご記入ください', max_length=50, null=True, blank=True)
+
     #Step2------------
 
     #Step3 image------------
@@ -109,9 +111,9 @@ class Property(models.Model):
     #Step3 image------------
 
     #Step4 price------------
-    price = models.PositiveIntegerField(null=True, blank=True)
-    includeAdditionalFee = models.NullBooleanField('公共料金は含まれていますか??', choices=YesNo) 
-    addtionalPrice = models.PositiveIntegerField('いいえの場合、メイトはいくら払う必要がありますか??', null=True, blank=True)
+    price = models.PositiveIntegerField('家賃', null=True, blank=True)
+    includeAdditionalFee = models.NullBooleanField('公共料金は含まれていますか?', choices=YesNo) 
+    addtionalPrice = models.PositiveIntegerField('いいえの場合、メイトはいくら払う必要がありますか?', null=True, blank=True)
     #Step4 price------------
 
     #Step5 about you------------
@@ -134,9 +136,9 @@ class Property(models.Model):
     yourImage = models.ImageField(upload_to='property/', null=True, blank=True)
     #Step5 about you------------
 
-    roomType = models.CharField('お部屋のタイプ*', choices=roomTYPE, max_length=10,null=True)
+    roomType = models.CharField('お部屋のタイプ*', choices=roomTYPE, max_length=10,null=True, blank=True)
     category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL, blank=True)
-    houseType =  models.CharField('お家の種類*', choices=houseTYPE, max_length=10, null=True)
+    houseType =  models.CharField('お家の種類*', choices=houseTYPE, max_length=10, null=True, blank=True)
     # oneToOne = models.BooleanField(
     #         '定員1名に独立した1部屋を提供できますか？？', 
     #         choices=YesNo,

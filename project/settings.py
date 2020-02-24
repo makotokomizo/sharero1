@@ -15,7 +15,7 @@ DEBUG = False
 
 try:
     from .local_settings import *
-except InmportError:
+except ImportError:
     pass
 
 ALLOWED_HOSTS = ['*']

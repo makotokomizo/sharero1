@@ -10,7 +10,7 @@
                 <div class="probootstrap-breadcrumbs">
                   <a href="#">Home</a><span><a href="{% url 'property:property_list' %}">Properties</a></span>{{property_detail}}
                 </div>
-                <h1>ありがとうございました!</h1>
+                <h1>家情報 編集</h1>
               </div>
             </div>
         </div>
@@ -26,22 +26,21 @@
 <!-- END: slider  -->
 
 
-<section class="probootstrap-section">
-    <div class="container">
-      <!--
-      <div class="row heading">
-        <div class="col-md-12">
-          <h2 class="mt0 mb50 text-center">{{property_detail}}</h2>
-        </div>
-      </div>
-      -->
-      <div class="row">
-        <div class="col-md-12">
-          <!--文の長さ-->
-          <h2> {{user.email}}さん</h2>
-          <h3>登録が完了しました。</h3>
-          <h3>申請いただいた情報を，当社の基準に照らし合わせて審査中です．</h3>
-          <h3>2~3日後にご連絡させていただきます．</h3>
+<form action="" method="POST" enctype="multipart/form-data">
+  {{ form.non_field_errors }}
+  <table class="table">
+    <tbody>
+      {% for field in form %}
+      <tr>
+        <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
+        <td>{{ field }} {{ field.errors }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-success btn-lg">送信</button>
+</form>
 
 
-{% endblock body %}
+{% endblock %}

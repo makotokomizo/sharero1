@@ -33,15 +33,17 @@ class PropertyForm(forms.ModelForm):
 #         model = Property
 #         fields = ['address', 'property_type']
 
-class PropertyForm2(forms.ModelForm):
-    """家情報投稿フォーム"""
-    # user = User
-    # loca = user.email
-    # print("form", loca)
-    location = forms.CharField(help_text='必須項目です。')
+class PropertyUpdateForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ('email', 'location')
+        model = Property
+        fields = ['petsType', 'furniture', 'member', 'memberUnder18', 'postCode', 
+        'city', 'address', 'title', 'contextSurrounding', 'contextRoom', 
+        'contextStation', 'bathroomType', 'petsPermission', 'smokingPersiion', 
+        'maxMenber', 'visiterPersiion', 'visiterStayPersiion', 'memoRoomDetail', 'image', 
+        'price', 'includeAdditionalFee', 'addtionalPrice',
+        'lastName', 'firstName', 'age', 'gender', 'profile', 'collageName', 
+        'facultyType', 'contextEducation', 'companyName', 'jobType', 'workingNow', 
+        'contextJob', 'rootine', 'yourImage']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -53,10 +55,16 @@ class Step1Form(forms.ModelForm):
         model = Property
         # fields = ['lastName', 'firstName', 'maxMenber', 'roomType', 'prefecture', 'houseType', 'oneToOne', 'ownerConfirm']
         fields = ['petsType', 'furniture', 'member', 'memberUnder18', 'postCode', 'city', 'address']
+        widgets = {
+            'petsType': forms.TextInput(attrs={'placeholder': 'ペットの種類'}),
+            'description': forms.Textarea(
+                attrs={'placeholder': 'Enter description here'}),
+        }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = ''
 
 class Step2Form(forms.ModelForm):
     class Meta:
@@ -68,6 +76,7 @@ class Step2Form(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = ''
 
 class Step3Form(forms.ModelForm):
 

@@ -16,6 +16,7 @@ urlpatterns = [
     path('detail/<int:pk>/', views.property_my_detail, name='property_my_detail'),
     # path(r'^(?P<pk>\d+)/detail$', views.property_my_detail, name='property_my_detail'),
     path('edit/<int:pk>/', views.property_edit, name='property_edit'),
+    path('edittest/<int:pk>/', views.PropUpdate.as_view(), name='property_edit_test'),
     # path('edit/<int:pk>/', views.property_edit.as_view(), name='property_edit'),
 
     path('property_data', views.property_list, name='property_list'),

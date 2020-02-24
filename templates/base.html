@@ -100,7 +100,7 @@
             <li>
               <a
                 class="nav-item nav-link"
-                href="{% url 'property:property_edit' user.pk %}"
+                href="{% url 'property:property_edit_test' user.property.pk %}"
                 >家情報の編集</a
               >
             </li>
@@ -314,8 +314,10 @@
       <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
     </div>
 
+    <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
     <script src="{% static 'js/scripts.min.js' %}"></script>
     <script src="{% static 'js/main.min.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+    
   </body>
 </html>

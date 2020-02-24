@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, resolve_url
 from .models import Property, Category, SharableItem, SharableSpace, ExcludeMate
-from .forms import (ReserveForm, PropertyForm, PropertyForm2, UserCreateForm, 
+from .forms import (ReserveForm, PropertyForm, PropertyUpdateForm, UserCreateForm, 
 Step1Form, Step2Form, Step3Form, Step4Form, Step5Form, ItemsForm, ItemsRecordForm, SpaceForm, ExcludeForm)
 from django.db.models import Q
 from django.contrib.auth import get_user_model
@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 User = get_user_model()
 
 def property_list(request):
-    property_list = Property.objects.all()
+    property_list = Property.objects.filter(public=True)
     template = 'property/list.html'
     # print(property_list(property_type="sale").query)
     # print(property_list.property_type)
@@ -511,6 +511,15 @@ def property_edit(request, pk):
     #     return resolve_url('register:user_detail', pk=self.kwargs['pk'])
 
     return render(request, template, context)
+
+class PropUpdate(generic.UpdateView):
+    model = Property
+    form_class = PropertyUpdateForm
+    template_name = 'property/property_edit_test.html'  # デフォルトユーザーを使う場合に備え、きちんとtemplate名を書く
+
+    def get_success_url(self):
+        return resolve_url('property:property_my_detail', pk=self.kwargs['pk'])
+
 
 class PropertyList(generic.ListView):
     """ユーザーを一覧表示。"""
