@@ -11,6 +11,12 @@ from django.conf import settings
 from email.mime.text import MIMEText
 import smtplib
 
+from django.db.models.signals import post_save
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
 class CustomUserManager(UserManager):
     """ユーザーマネージャー"""
     use_in_migrations = True
@@ -64,6 +70,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     memo = models.TextField(_('備考'),max_length=20, blank=True)
     price = models.CharField(_('家賃'),max_length=20, blank=True)
     # homeProperty = models.OneToOneField(Property, related_name="homeProperty",on_delete=models.SET_NULL, null=True, blank=True)
+    
+    stripe_id = models.CharField(max_length=200, null=True, blank=True)
+
     is_Nester = models.BooleanField(
         _('Nester'),
         default=False,
@@ -137,4 +146,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     # def username(self):
     #     return self.email
 
+# def post_save_profile_create(sender, instance, created, *args, **kwargs):
+#     user_profile, created = User.objects.get_or_create(user=instance)
 
+#     if user_profile.stripe_id is None or user_profile.stripe_id == '':
+#         new_stripe_id = stripe.Customer.create(email=instance.email)
+#         user_profile.stripe_id = new_stripe_id['id']
+#         user_profile.save()
+
+# post_save.connect(post_save_profile_create, sender=settings.AUTH_USER_MODEL)

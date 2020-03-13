@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load bootstrap4 %} {% block body %}
 {% load static %}
-<section class="probootstrap-slider flexslider2 page-inner">
+<!-- <section class="probootstrap-slider flexslider2 page-inner">
   <div class="overlay"></div>
   <div class="probootstrap-wrap-banner">
     <div class="container">
@@ -23,10 +23,11 @@
     <li style="background-image: url(img/slider_4.jpg);"></li>
     <li style="background-image: url(img/slider_2.jpg);"></li>
   </ul>
-</section>
+</section> -->
 <!-- END: slider  -->
 
-
+<h1>Step 3/5</h1>
+<h2>お部屋の画像</h2>
 <section class="probootstrap-section">
     <div class="container">
       <!--
@@ -52,31 +53,89 @@
                 </div>
               </div>
               {% endfor %}
+
+              <p>最低1枚、最大5枚の写真をアップロードしてください。</p>
+
               {% buttons %}
                   <button type="submit" class="btn btn-primary">次のStep</button>
               {% endbuttons %}
           </form>
 
 
-
+          
 
           <!-- <input type="file" id="myImage" accept="image/*"> -->
           <img id="preview">
             <p class="btn_upload">
-              画像ファイルを選択してアップロード
+              
             </p>
           </div>
+          
+          <!-- <img id="preview2"> -->
+          
+
+          <script>
+            for (var i = 2; i < 6; i++){
+    
+            document.write('<img id="preview'+String(i)+'">' + "</p>");
+            }
+          </script>
 
           <script src="{% static 'js/jquery.min.js' %}"></script>
     
           <script>
-            $('#id_image').on('change', function (e) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              $("#preview").attr('src', e.target.result).css('width','60%');
-          }
-          reader.readAsDataURL(e.target.files[0]);
-          });
+            aarg = '#id_image'
+            $(aarg).on('change', function (e) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#preview").attr('src', e.target.result).css('width','60%');
+            }
+            reader.readAsDataURL(e.target.files[0]);
+            });
+
+            $('#id_image2').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#preview2').attr('src', e.target.result).css('width','60%');
+              }
+              reader.readAsDataURL(e.target.files[0]);
+              });
+            $('#id_image3').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#preview3').attr('src', e.target.result).css('width','60%');
+              }
+              reader.readAsDataURL(e.target.files[0]);
+              });
+            $('#id_image4').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#preview4').attr('src', e.target.result).css('width','60%');
+              }
+              reader.readAsDataURL(e.target.files[0]);
+              });
+            $('#id_image5').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#preview5').attr('src', e.target.result).css('width','60%');
+              }
+              reader.readAsDataURL(e.target.files[0]);
+              });
+            
+            
+            // コード短くしたい
+            // for (var i = 2; i < 5; i++){
+            //   arg = '#id_image'+String(i)
+            //   console.log(arg)
+            //   $('#id_image'+String(i)).on('change', function (e) {
+            //   var reader = new FileReader();
+            //   reader.onload = function (e) {
+            //     console.log('#preview'+String(i))
+            //       $('#preview'+String(i)).attr('src', e.target.result).css('width','60%');
+            //   }
+            //   reader.readAsDataURL(e.target.files[0]);
+            //   });
+            // }
           </script>
 
 

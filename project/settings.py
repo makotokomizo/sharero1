@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'register',
     'chat',
     'channels',
+
+    'payments'
     # 'build',
     # 'todos',
     # 'todo',
@@ -256,3 +258,11 @@ CSRF_COOKIE_NAME = "csrftoken"
 HOST_URL = 'https://justdjango-chat.herokuapp.com'
 if DEBUG:
     HOST_URL = 'http://127.0.0.1:8000'
+
+# sharero
+# STRIPE_SECRET_KEY = 'sk_test_6aeWrJLjOKAn357qAJXKDEHW00ZZSFNGrq'
+# STRIPE_PUBLISHABLE_KEY = 'pk_test_5R6ZGOl5VQCN7o2Q4ai3oeVw00l5nrApEk'
+
+# test
+STRIPE_SECRET_KEY = 'sk_test_eNKFxfTR0wB9GCtHUBqg3xlB00mjzEaWsA'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_LAaf7TTYKj1nAtwz7Kcg1tgc00E0cjN71t'

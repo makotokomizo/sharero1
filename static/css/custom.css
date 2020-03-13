@@ -1,4 +1,31 @@
-/* Your custom css code goes here */
+/* home */
+.flexslider .slides .overlay::before {
+  background: rgba(255, 255, 255, 0) !important;
+}
+/* home */
+
+/* property */
+/* detail */
+.slider {
+  margin: 100px auto;
+  width: 80%;
+}
+.slider img {
+  height: auto;
+  width: 100%;
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before {
+  color: #000 !important;
+}
+
+.slick-slide {
+  height: 80%;
+}
+/* detail */
+/* property */
+
 .probootstrap-main-nav li a {
   color: #fff;
 }
@@ -131,4 +158,50 @@
 .threeflow {
   position: relative;
   z-index: 1;
+}
+
+/* header */
+.dropdown {
+  display: inline;
+  position: inherit;
+}
+
+.dropdown button {
+  background-color: #2e348a;
+  display: block;
+  margin: 0 0 0 auto;
+}
+.dropdown-menu {
+  display: block;
+  margin: 0 0 0 auto;
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  left: auto;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-caret-down:before {
+  content: "\f0d7";
 }

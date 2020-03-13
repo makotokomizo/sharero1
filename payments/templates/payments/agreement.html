@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% block body %}
+
+<h1>Stripe ご利用規約</h1>
+<section class="probootstrap-section">
+  <div class="container">
+    <!--
+      <div class="row heading">
+        <div class="col-md-12">
+          <h2 class="mt0 mb50 text-center">{{property_detail}}</h2>
+        </div>
+      </div>
+      -->
+    <div class="row">
+      <div class="col-md-12">
+        <!--文の長さ-->
+        <h2>{{user.email}}さん</h2>
+        <form
+          action=""
+          method="POST"
+          class="post-form"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %} {% bootstrap_form agreement_form %}
+          <!-- {{property_form.as_p}} -->
+          {% buttons %}
+          <button type="submit" class="btn btn-primary">完了</button>
+          {% endbuttons %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}

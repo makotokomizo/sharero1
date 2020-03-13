@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %} {% block body %}
+
+<section class="probootstrap-section probootstrap-section-lighter">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <p>利用規約等</p>
+        <div
+          style="background-color: #2E348A; margin: 20px; border-radius: 20px; font-size: x-large;"
+        >
+          <h2
+            style="color: #fff; text-align: center; padding: 40px;font-size: small;"
+          >
+            素敵なホームメイトですね、おめでとうございます！
+            ホームシェアを始める前に、サービス利用規約、プライバシーポリシーをご一読ください。
+          </h2>
+
+          <div
+            class="probootstrap-card-media jpg-sm colored"
+            style="text-align: center;"
+          >
+            <img
+              src="{% static 'img/sharero2.jpg' %}"
+              class="jpg"
+              alt="Free HTML5 Template by uicookies.com"
+              width="100"
+              height="auto"
+              style="margin-bottom: 10px;;"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div
+          style="background-color: #2E348A; margin: 20px; border-radius: 20px; font-size: x-large;"
+        >
+          <h2 style="color: #fff; text-align: center; padding: 40px;">
+            利用規約
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <h2>Buy for {{ amount }}</h2> -->
+<h2>{{ user.email }}様：</h2>
+
+<h2>以下のボタンから、カード情報の入力をお願いします。</h2>
+<h2>定期支払い：月々{{ amount }}円　自動引き落とし</h2>
+
+{% if user.is_authenticated %}
+<form action="{% url 'payments:charge' plan_id %}" method="post">
+  {% csrf_token %}
+  <script
+    src="https://checkout.stripe.com/checkout.js"
+    class="stripe-button"
+    data-key="{{ key }}"
+    data-name="ShareRo"
+    data-description="A Django Charge"
+    data-amount="{{ amount }}"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="ja"
+    data-currency="jpy"
+    data-email="{{ user.email }}"
+  ></script>
+  {% csrf_token %}
+</form>
+
+{% endif %} {% endblock body %}

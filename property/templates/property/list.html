@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-<section class="probootstrap-slider flexslider2 page-inner">
+<!-- <section class="probootstrap-slider flexslider2 page-inner">
   <div class="overlay"></div>
   <div class="probootstrap-wrap-banner">
     <div class="container">
@@ -20,7 +20,7 @@
     <li style="background-image: url(img/slider_4.jpg);"></li>
     <li style="background-image: url(img/slider_2.jpg);"></li>
   </ul>
-</section>
+</section> -->
 <!-- END: slider  -->
 
 <section class="probootstrap-section probootstrap-section-lighter">
@@ -40,22 +40,22 @@
           <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading">
               <a href=" {% url 'property:property_detail' property.id %}"
-                >{{ property.location }}</a
+                >{{ property.title }}</a
               >
               <!-- 名前 -->
             </h2>
-            <div class="probootstrap-listing-location">
+            <!-- <div class="probootstrap-listing-location">
               <i class="icon-location2"></i>
               <span>360 W Wellington Chicago, IL 60657</span>
-            </div>
-            <div class="probootstrap-listing-category for-sale">
+            </div> -->
+            <!-- <div class="probootstrap-listing-category for-sale">
               <span>ジャスト{{property.property_type}}</span>
-            </div>
+            </div> -->
             <div class="probootstrap-listing-price">
-              <strong>{{property.price}}円</strong> / month
+              <strong>{{property.price}}円</strong> / 月
             </div>
           </div>
-          <div class="probootstrap-card-extra">
+          <!-- <div class="probootstrap-card-extra">
             <ul>
               <li>
                 Area
@@ -65,18 +65,12 @@
                 Beds
                 <span>{{property.beds_number}}</span>
               </li>
-              <!--
-                <li>
-                  Baths
-                  <span>{{property.baths_number}}</span>
-                </li>
-                -->
               <li>
                 Garages
                 <span>{{property.garages_number}}</span>
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
         <!-- END listing -->
       </div>
@@ -84,7 +78,6 @@
       <div class="col-md-10 col-sm-10">
         <h2>
           No Properties with This Name or Type
-          そんな名前かつタイプの部屋はない．
         </h2>
       </div>
       {% endif %}

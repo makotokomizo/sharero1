@@ -77,7 +77,7 @@ class Property(models.Model):
     petsType = models.CharField('ペットはいますか？', null=True, blank=True, max_length=50)
     furniture = models.CharField('家具付きですか？', null=True, blank=True, max_length=50)
     member =  models.CharField('現在の居住者', null=True, blank=True, max_length=50)
-    memberUnder18 = models.CharField('18歳以下', null=True, blank=True, max_length=50)
+    memberUnder18 = models.CharField('18歳未満', null=True, blank=True, max_length=50)
     postCode = models.CharField('郵便番号',max_length=8,blank=True)
     city = models.CharField('市区', max_length=10, blank=True)
     address = models.CharField('町村番地',max_length=40,blank=True)
@@ -106,7 +106,11 @@ class Property(models.Model):
     #Step2------------
 
     #Step3 image------------
-    image = models.ImageField(upload_to='property/', null=True, blank=True)
+    image = models.ImageField('お部屋の写真1(必須)',upload_to='property/', null=True)
+    image2 = models.ImageField('お部屋の写真2',upload_to='property/', null=True, blank=True)
+    image3 = models.ImageField('お部屋の写真3',upload_to='property/', null=True, blank=True)
+    image4 = models.ImageField('お部屋の写真4',upload_to='property/', null=True, blank=True)
+    image5 = models.ImageField('お部屋の写真5',upload_to='property/', null=True, blank=True)
 
     #Step3 image------------
 
@@ -128,7 +132,7 @@ class Property(models.Model):
     contextEducation = models.TextField('研究、学んだこと、課題活動',max_length=200, null=True, blank=True)
     #job---
     companyName = models.CharField('企業名',max_length=40,blank=True)
-    jobType = models.CharField('役割',max_length=40,blank=True)
+    jobType = models.CharField('職業',max_length=40,blank=True)
     workingNow = models.NullBooleanField('現在もお仕事されていますか??', choices=YesNo) 
     contextJob = models.TextField('どういうお仕事をされていましたか？？(されていますか？？)',max_length=200, null=True, blank=True)
 

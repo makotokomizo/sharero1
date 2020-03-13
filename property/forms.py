@@ -80,14 +80,12 @@ class Step2Form(forms.ModelForm):
 
 class Step3Form(forms.ModelForm):
 
-    # sharableItems = forms.ModelMultipleChoiceField(
-    #     queryset=SharableItem.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple
-    # )
     class Meta:
         model = Property
-        # fields = ['beds_number', 'toiletsNumber', 'bathesNumber']
-        fields = ['image']
+        fields = ['image', 'image2', 'image3', 'image4', 'image5']
+        # widgets = {
+        #     'image': forms.ClearableFileInput(attrs={'multiple': True})
+        # }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
