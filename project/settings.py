@@ -242,14 +242,14 @@ REST_FRAMEWORK = {
     ),
     # 'EXCEPTION_HANDLER': 'djangotodo.todos.utils.custom_exception_handler'
 }
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/',
-    'localhost:3000',
-    '127.0.0.1:3000/',
-    '127.0.0.1:3000',
-    '127.0.0.1:8000/',
-    '127.0.0.1:8000',
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'localhost:3000/',
+#     'localhost:3000',
+#     '127.0.0.1:3000/',
+#     '127.0.0.1:3000',
+#     '127.0.0.1:8000/',
+#     '127.0.0.1:8000',
+# )
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
