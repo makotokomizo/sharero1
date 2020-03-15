@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
+SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -163,11 +163,12 @@ AUTH_USER_MODEL = 'register.User'
 # ログインページと、直接ログインページへ行った後のリダイレクトページ
 LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'register:top'
-
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 import dj_database_url
 DATABASES = {
@@ -186,7 +187,7 @@ DATABASES['default'].update(db_from_env)
 # STATICFILES_DIRS = [
 # os.path.join(BASE_DIR, 'static'),
 # ]
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['SECRET_KEY']
 import django_heroku #追加
 django_heroku.settings(locals()) #追加
 # Extra places for collectstatic to find static files.
@@ -218,8 +219,7 @@ django_heroku.settings(locals()) #追加
 #     os.path.join(BASE_DIR, "static"),
 # ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
