@@ -185,7 +185,7 @@ AUTH_USER_MODEL = 'register.User'
 LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'register:top'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 MEDIA_URL = '/media/'
@@ -195,31 +195,31 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Extra places for collectstatic to find static files.
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# if not DEBUG:
-#     import dj_database_url
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'name',
-#             'USER': 'user',
-#             'PASSWORD': '',
-#             'HOST': 'host',
-#             'PORT': '',
-#         }
-#     }
-#     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-#     DATABASES['default'].update(db_from_env)
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#     # STATICFILES_DIRS = [
-#     # os.path.join(PROJECT_ROOT, 'static'),
-#     # ]
-#     SECRET_KEY = os.environ['SECRET_KEY']
-#     import django_heroku #追加
-#     django_heroku.settings(locals()) #追加
+if not DEBUG:
+    import dj_database_url
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'name',
+            'USER': 'user',
+            'PASSWORD': '',
+            'HOST': 'host',
+            'PORT': '',
+        }
+    }
+    db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default'].update(db_from_env)
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # STATICFILES_DIRS = [
+    # os.path.join(PROJECT_ROOT, 'static'),
+    # ]
+    SECRET_KEY = os.environ['SECRET_KEY']
+    import django_heroku #追加
+    django_heroku.settings(locals()) #追加
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 
 
