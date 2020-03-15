@@ -121,10 +121,10 @@ DATABASES = {
 }
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-os.path.join(STATIC_ROOT, 'static'),
-]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS = [
+# os.path.join(STATIC_ROOT, 'static'),
+# ]
 SECRET_KEY = os.environ['SECRET_KEY']
 import django_heroku #追加
 django_heroku.settings(locals()) #追加
@@ -190,27 +190,27 @@ STATIC_URL = '/static/'
 # Extra places for collectstatic to find static files.
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-if not DEBUG:
-    import dj_database_url
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'name',
-            'USER': 'user',
-            'PASSWORD': '',
-            'HOST': 'host',
-            'PORT': '',
-        }
-    }
-    db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default'].update(db_from_env)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # STATICFILES_DIRS = [
-    # os.path.join(PROJECT_ROOT, 'static'),
-    # ]
-    SECRET_KEY = os.environ['SECRET_KEY']
-    import django_heroku #追加
-    django_heroku.settings(locals()) #追加
+# if not DEBUG:
+#     import dj_database_url
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'name',
+#             'USER': 'user',
+#             'PASSWORD': '',
+#             'HOST': 'host',
+#             'PORT': '',
+#         }
+#     }
+#     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#     DATABASES['default'].update(db_from_env)
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     # STATICFILES_DIRS = [
+#     # os.path.join(PROJECT_ROOT, 'static'),
+#     # ]
+#     SECRET_KEY = os.environ['SECRET_KEY']
+#     import django_heroku #追加
+#     django_heroku.settings(locals()) #追加
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
