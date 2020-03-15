@@ -303,7 +303,7 @@ def connect_submit(request):
 
             # # bank info.
             acct.external_accounts.create(external_account= {
-                'object':prop.object,
+                'object_account':prop.object_account,
                 'account_number': prop.account_number,
                 'routing_number': prop.routing_number, #銀行コード+支店コード
                 'account_holder_name':prop.account_holder_name,

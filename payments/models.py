@@ -212,7 +212,7 @@ class ConnectAccount(models.Model):
 
 
     # bank
-    object = models.CharField('タイプ', max_length=20, default='bank_account')
+    object_account = models.CharField('タイプ', max_length=20, default='bank_account')
     account_number = models.CharField('口座番号(7桁)', max_length=7, null=True)
     bank_code = models.CharField('銀行コード(4桁)', max_length=4, null=True)
     branch_code = models.CharField('支店コード(3桁)', max_length=3, null=True)

@@ -1,19 +1,28 @@
 import os
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
+SECRET_KEY = 'l(+sdl8f5dh47t*%jyblveol7yw#!qb3lu&#_wecv)buj72_jl'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 try:
     from .local_settings import *
 except ImportError:
     pass
+
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+
 # Application definition
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -22,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -30,7 +40,9 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
+
     'bootstrap4',
+
     'property',
     'agents',
     'about',
@@ -39,24 +51,32 @@ INSTALLED_APPS = [
     'register',
     'chat',
     'channels',
+
+    # 'payments'
     # 'build',
     # 'todos',
     # 'todo',
     # 'build-test',
     # 'public'
 ]
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
+     
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 ROOT_URLCONF = 'project.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -77,40 +97,33 @@ TEMPLATES = [
         },
     },
 ]
+
 WSGI_APPLICATION = 'project.wsgi.application'
 ASGI_APPLICATION = 'project.routing.application'
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-# import dj_database_url
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'name',
-#         'USER': 'user',
-#         'PASSWORD': '',
-#         'HOST': 'host',
-#         'PORT': '',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-# db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-# DATABASES['default'].update(db_from_env)
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
+
+
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -125,26 +138,38 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
 # カスタムユーザーを使う
 AUTH_USER_MODEL = 'register.User'
+
 # ログインページと、直接ログインページへ行った後のリダイレクトページ
 LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'register:top'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
-# Extra places for collectstatic to find static files.
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 if not DEBUG:
     import dj_database_url
     DATABASES = {
@@ -159,20 +184,43 @@ if not DEBUG:
     }
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default'].update(db_from_env)
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),
-    ]
-    SECRET_KEY = os.environ['SECRET_KEY']
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    # STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static'),
+    # ]
+    # SECRET_KEY = os.environ['SECRET_KEY']
     import django_heroku #追加
     django_heroku.settings(locals()) #追加
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+# Extra places for collectstatic to find static files.
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# if not DEBUG:
+#     import dj_database_url
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'name',
+#             'USER': 'user',
+#             'PASSWORD': '',
+#             'HOST': 'host',
+#             'PORT': '',
+#         }
+#     }
+#     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#     DATABASES['default'].update(db_from_env)
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     # STATICFILES_DIRS = [
+#     # os.path.join(PROJECT_ROOT, 'static'),
+#     # ]
+#     SECRET_KEY = os.environ['SECRET_KEY']
+#     import django_heroku #追加
+#     django_heroku.settings(locals()) #追加
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
+
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
