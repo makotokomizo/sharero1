@@ -102,12 +102,12 @@ ASGI_APPLICATION = 'project.routing.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 # import dj_database_url
 # DATABASES = {
 #     'default': {
@@ -124,14 +124,14 @@ DATABASES = {
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -177,7 +177,7 @@ LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'register:top'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
@@ -199,7 +199,7 @@ if not DEBUG:
     }
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default'].update(db_from_env)
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
     ]

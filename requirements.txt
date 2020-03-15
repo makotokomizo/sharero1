@@ -22,6 +22,7 @@ Django==2.2
 django-allauth==0.38.0
 django-bootstrap4==1.1.1
 django-cors-headers==3.2.1
+django-heroku==0.3.1
 django-ipware==2.1.0
 django-location-field==2.1.0
 django-map-widgets==0.2.2
@@ -40,6 +41,7 @@ mccabe==0.6.1
 msgpack==0.5.6
 oauthlib==2.1.0
 Pillow==6.2.1
+psycopg2==2.8.4
 pycparser==2.19
 PyHamcrest==2.0.0
 python3-openid==3.1.0
