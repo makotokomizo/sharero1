@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'chat',
     'channels',
 
-    # 'payments'
+    'payments'
     # 'build',
     # 'todos',
     # 'todo',
